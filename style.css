@@ -56,6 +56,11 @@ body {
   color: var(--fg);
 }
 
+.mission .pillar {
+  font-weight: 500;
+  color: var(--fg);
+}
+
 .slogan {
   margin-top: 2.5rem;
   font-size: 0.8rem;
