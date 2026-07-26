@@ -39,9 +39,10 @@ body {
 }
 
 .page {
-  max-width: 640px;
+  /* +4vw keeps the text column the same width as the padding grew */
+  max-width: calc(640px + 4vw);
   margin: 0;
-  padding: 20vh 3.5rem 4rem 8vw;
+  padding: 20vh 3.5rem 4rem 12vw;
 }
 
 .brand {
@@ -184,7 +185,7 @@ body {
   }
 
   .page {
-    padding-bottom: 2rem;
+    padding: 20vh 8vw 2rem;
   }
 
   .timeline {
