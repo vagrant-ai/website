@@ -76,13 +76,15 @@ body {
 
 .slogan {
   margin-top: 1.15rem;
-  /* flush with the right edge of the mission column, not the left margin */
+  /* right-aligned to the mission column, then inset a little from its edge */
   max-width: 52ch;
+  padding-right: 2rem;
   text-align: right;
-  font-size: 0.95rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  /* Orbitron, like the brand — it runs wide, so trim size and tracking */
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   color: var(--dim);
 }
 
