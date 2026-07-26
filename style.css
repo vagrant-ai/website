@@ -2,6 +2,7 @@
   --bg: #ffffff;
   --fg: #111111;
   --dim: #888888;
+  --line: #dddddd;
 
   --fs-brand: clamp(2rem, 6vw, 3.25rem);
   --fs-body: 0.9rem;
@@ -29,8 +30,15 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.page {
+.layout {
   min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.page {
   max-width: 640px;
   margin: 0;
   padding: 20vh 3.5rem 4rem 8vw;
@@ -74,6 +82,116 @@ body {
   color: var(--dim);
 }
 
+.timeline {
+  flex: 0 0 auto;
+  /* sits just below the brand, above the mission text */
+  padding: calc(20vh + 1.25rem) 18vw 4rem 0;
+}
+
+.timeline-title {
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1.5rem;
+}
+
+.timeline-list {
+  --tl-gap: 1.25rem;
+  list-style: none;
+  padding-left: var(--tl-gap);
+  /* line fades out at the bottom — the story isn't finished */
+  background: linear-gradient(to bottom, var(--line) 65%, transparent) left / 1px 100% no-repeat;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.4rem;
+  color: var(--dim);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  /* line sits at the list's left edge; center the dot on it */
+  left: calc(-1 * var(--tl-gap) + 0.5px);
+  transform: translateX(-50%);
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.timeline-item.is-done::before,
+.timeline-item.is-next::before {
+  background: var(--fg);
+}
+
+.timeline-item.is-next::before {
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--fg) 35%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--fg) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item.is-next::before {
+    animation: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--fg) 18%, transparent);
+  }
+}
+
+.timeline-item time,
+.timeline-when {
+  font-size: var(--fs-meta);
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-when {
+  text-transform: uppercase;
+}
+
+.timeline-label {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.timeline-item.is-done .timeline-label,
+.timeline-item.is-next .timeline-label {
+  color: var(--fg);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .page {
+    padding-bottom: 2rem;
+  }
+
+  .timeline {
+    padding: 0 8vw 6rem;
+  }
+}
+
 .github {
   position: fixed;
   top: 1.25rem;
@@ -98,5 +216,6 @@ body {
     --bg: #000000;
     --fg: #ededed;
     --dim: #888888;
+    --line: #2a2a2a;
   }
 }
