@@ -88,6 +88,43 @@ body {
   color: var(--dim);
 }
 
+.portfolio {
+  margin-top: 3.5rem;
+}
+
+.portfolio-title {
+  /* a step up from the timeline heading — this is a section of its own */
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1rem;
+}
+
+.portfolio-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: var(--fs-body);
+}
+
+/* no rule at rest — it surfaces on hover, so the name reads as a name */
+.portfolio-list a,
+.timeline-label a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.1em;
+  transition: border-color 0.2s;
+}
+
+.portfolio-list a:hover,
+.timeline-label a:hover {
+  border-color: var(--fg);
+}
+
 .timeline {
   flex: 0 0 auto;
   /* sits just below the brand, above the mission text */
