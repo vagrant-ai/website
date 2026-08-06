@@ -28,10 +28,14 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* column so the footer can be pinned to the bottom of a short page */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout {
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -220,65 +224,14 @@ body {
   color: var(--fg);
 }
 
-.meta-links {
-  position: fixed;
-  top: 1.25rem;
-  right: 2rem;
-  z-index: 10;
+/* address centered, sitting close to the bottom edge of the page */
+.site-footer {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  padding: 0 2rem 1rem;
   font-size: var(--fs-meta);
   letter-spacing: 0.03em;
-}
-
-.meta-links a {
   color: var(--dim);
-  text-decoration: none;
-  border-bottom: 1px solid var(--dim);
-  padding-bottom: 0.15em;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.meta-links a:hover {
-  color: var(--fg);
-  border-color: var(--fg);
-}
-
-/* the address fades in under "Contact" on hover — absolute, so revealing it
-   shifts nothing around it */
-.contact {
-  position: relative;
-}
-
-.contact-mail {
-  position: absolute;
-  top: calc(100% + 0.6rem);
-  right: 0;
-  white-space: nowrap;
-  /* a step down from the nav links — supporting detail, not a second link */
-  font-size: 0.7rem;
-  letter-spacing: 0.02em;
-  color: var(--dim);
-  opacity: 0;
-  /* nudge up while hidden, settle into place as it fades in */
-  transform: translateY(-0.25rem);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.contact:hover .contact-mail,
-.contact:focus-visible .contact-mail {
-  opacity: 1;
-  transform: translateY(0);
-  /* selectable once revealed, so the address can be copied */
-  pointer-events: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-mail {
-    transition: none;
-    transform: none;
-  }
 }
 
 @media (max-width: 900px) {
@@ -292,19 +245,11 @@ body {
   }
 
   .timeline {
-    padding: 0 8vw 6rem;
+    padding: 0 8vw 4rem;
   }
 
-  .meta-links {
-    right: 8vw;
-  }
-}
-
-/* no hover on touch — leave the address showing, since it can't be revealed */
-@media (hover: none) {
-  .contact-mail {
-    opacity: 1;
-    transform: none;
+  .site-footer {
+    padding: 0 8vw 1rem;
   }
 }
 
