@@ -96,6 +96,15 @@ body {
   margin-top: 3.5rem;
 }
 
+.contact-section {
+  /* tighter than the portfolio gap — the two read as a pair */
+  margin-top: 2.5rem;
+}
+
+.contact-email {
+  font-size: var(--fs-body);
+}
+
 .portfolio-title {
   /* a step up from the timeline heading — this is a section of its own */
   font-size: 0.9rem;
@@ -224,16 +233,6 @@ body {
   color: var(--fg);
 }
 
-/* address centered, sitting close to the bottom edge of the page */
-.site-footer {
-  display: flex;
-  justify-content: center;
-  padding: 0 2rem 1rem;
-  font-size: var(--fs-meta);
-  letter-spacing: 0.03em;
-  color: var(--dim);
-}
-
 @media (max-width: 900px) {
   .layout {
     flex-direction: column;
@@ -246,10 +245,6 @@ body {
 
   .timeline {
     padding: 0 8vw 4rem;
-  }
-
-  .site-footer {
-    padding: 0 8vw 1rem;
   }
 }
 
