@@ -1,2 +1,2 @@
 # website
-A website for vagrant.ai.
+The website for vagrant.ai.
